@@ -21,7 +21,9 @@ import {
   REQ_USERINFO,
   RESET_USERS,
   REQ_KINGKONGMODULE,
-  REQ_SCENELIGHTSHOPPINGGUIDEMODULE
+  REQ_SCENELIGHTSHOPPINGGUIDEMODULE,
+  REQ_REQCATEGORYMODULE,
+  REQ_CURRENTCATEGORY,
 } from './mutations-Type'
 
 export default {
@@ -37,8 +39,15 @@ export default {
   [REQ_SCENELIGHTSHOPPINGGUIDEMODULE] (state,{sceneLightShoppingGuideModule}) {
     state.sceneLightShoppingGuideModule = sceneLightShoppingGuideModule;
   },
-
-
+  [REQ_REQCATEGORYMODULE] (state,{categoryModule}) {
+    state.categoryModule = categoryModule;
+  },
+  [REQ_CURRENTCATEGORY] (state,{currentCategory}) {
+    state.currentCategory = currentCategory;
+  },
+  [REQ_CATEGORYL1LIST] (state,{categoryL1List}) {
+    state.categoryL1List = categoryL1List;
+  },
 
   [REQ_SALEINDEXVO] (state, {saleIndexVO}) {
     state.saleIndexVO  = saleIndexVO;
@@ -61,9 +70,7 @@ export default {
   [REQ_POLICYDESCLIST] (state,{policyDescList}) {
     state.policyDescList = policyDescList;
   },
-  [REQ_CATEGORYL1LIST] (state,{categoryL1List}) {
-    state.categoryL1List = categoryL1List;
-  },
+
   [REQ_TOPICBANNER] (state,{banner}) {
     state.banner = banner
   },

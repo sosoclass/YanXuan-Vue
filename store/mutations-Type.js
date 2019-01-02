@@ -8,6 +8,11 @@ export const REQ_KINGKONGMODULE = 'req_kingKongModule'
 
 export const REQ_SCENELIGHTSHOPPINGGUIDEMODULE = 'req_sceneLightShoppingGuideModule'
 
+export const REQ_REQCATEGORYMODULE = 'req_reqcategorymodule'
+
+export const REQ_CATEGORYL1LIST = 'req_categoryl1list'
+
+export const REQ_CURRENTCATEGORY = 'req_currentCategory'
 
 export const REQ_SALEINDEXVO = 'req_saleindexvo'
 
@@ -23,7 +28,7 @@ export const REQ_TAGLIST = 'req_taglist'
 
 export const REQ_POLICYDESCLIST = 'req_policydesclist'
 
-export const REQ_CATEGORYL1LIST = 'req_categoryl1list'
+
 
 export const REQ_TOPICBANNER = 'req_topicbanner'
 

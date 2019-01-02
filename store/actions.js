@@ -21,7 +21,9 @@ import {
   REQ_FINDMORE,
   REQ_USERINFO,
   RESET_USERS,
-  REQ_SCENELIGHTSHOPPINGGUIDEMODULE
+  REQ_SCENELIGHTSHOPPINGGUIDEMODULE,
+  REQ_REQCATEGORYMODULE,
+  REQ_CURRENTCATEGORY
 } from './mutations-Type'
 import {
   reqData,
@@ -48,7 +50,10 @@ import {
   reqGetUsers,
   reqCodeLogin,
   reqkingKongModule,
-  reqsceneLightShoppingGuideModule
+  reqsceneLightShoppingGuideModule,
+  reqcategoryModule,
+  reqcurrentCategory,
+
 } from '../src/api'
 
 export default {
@@ -77,6 +82,14 @@ export default {
     const sceneLightShoppingGuideModule = await reqsceneLightShoppingGuideModule();
     if (sceneLightShoppingGuideModule.code === 0) {
       commit(REQ_SCENELIGHTSHOPPINGGUIDEMODULE, {sceneLightShoppingGuideModule: sceneLightShoppingGuideModule.sceneLightShoppingGuideModule})
+      typeof cb === 'function' && cb()
+    }
+  },
+
+  async reqcurrentCategory ({commit},cb) {
+    const currentCategory = await reqcurrentCategory();
+    if (currentCategory.code === 0) {
+      commit(REQ_CURRENTCATEGORY, {currentCategory: currentCategory.currentCategory})
       typeof cb === 'function' && cb()
     }
   },

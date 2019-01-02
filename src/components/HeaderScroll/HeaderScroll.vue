@@ -2,7 +2,7 @@
   <div class="header-title ">
     <div class="left">
       <div class="page-hot">
-        <span class="page-hot-title on" >推荐</span>
+        <span class="page-hot-title on"  >推荐</span>
       </div>
       <div class="page-home">
         <span class="page-home-title">居家</span>
@@ -56,7 +56,7 @@
         .page-hot-title
         &.on
           color #b4282d
-          border-bottom 1.9px solid #b4282d;
+          border-bottom 1.5px solid #b4282d;
       > div
         position: relative;
         display: flex;

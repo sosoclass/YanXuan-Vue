@@ -18,13 +18,11 @@ export const reqkingKongModule =()=>ajax('/kingKongModule')
 export const reqsceneLightShoppingGuideModule =()=>ajax('/sceneLightShoppingGuideModule')
 
 
+export const reqcategoryModule = ()=>ajax('/categoryModule')
 
+export const reqcurrentCategory = ()=>ajax('/currentCategory')
 
-
-
-
-
-
+export const reqcategoryL1List = ()=>ajax('/categoryL1List')
 
 //home 福利
 export const reqsaleIndexVO = () => ajax('/saleIndexVO')

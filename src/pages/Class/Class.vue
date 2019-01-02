@@ -1,40 +1,39 @@
 <template>
-  <div class="item">
-    <div class="headerWrap">
-      <div class="header">
-        <div class="headerSearch">
-          <span><i class="iconfont icon-search"></i></span>
-          <span>搜索商品, 共9723款好物</span>
+  <div class="fenlei">
+    <div class="hdWraper">
+      <div class="m-hd">
+        <div class="m-itemCateListHd">
+          <div class="m-topSearchIpt">
+            <i class="header-input-icon iconfont icon-search"></i>
+            <span class="placeholder" >搜索商品, 共20229款好物</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="itemWrap">
-      <div class="left">
-        <ul class="leftUl">
-          <li>
-            <a href="javascript:;" ></a>
+    <div class="m-cateNavVertWrap">
+      <div class="m-cateNavVertWrap-space">
+        <ul class="m-cateNavVert">
+          <li class="item" v-for="(list,index) in categoryL1List" :key="index">
+            <a href="javescript:;" class="txt">{{list.name}}</a>
           </li>
+
         </ul>
-      </div>
-
-      <div class="right">
-        <div class="rightWrap">
-          <img>
-          <div class="title">
-            <span class="lines"></span>
-            <span ></span>
-            <span>分类</span>
-            <span class="lines"></span>
+        <div class="m-subCateList">
+          <div class="banner">
+            <div class="cnt"></div>
           </div>
-
-          <ul class="contentWrap" >
-            <li >
-              <a href="javascript:;">
-                <img>
-                <span class="ellipsis"></span>
-              </a>
-            </li>
-          </ul>
+          <div class="cateList">
+            <ul class="list">
+              <li class="cateItem">
+                <a href="javascript:;">
+                  <div class="cateImgWrapper">
+                    <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png?imageView&quality=85&thumbnail=144x144" alt="" class="cateImg">
+                  </div>
+                  <div class="name"></div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -45,128 +44,133 @@
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   export default {
+    computed: {
+      ...mapState(['currentCategory','categoryL1List'])
+    },
+    mounted(){
+      this.$store.dispatch('reqcurrentCategory');
+      this.$store.dispatch('reqCategoryL1List');
+    }
 
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" >
+<style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins";
-  .item
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    .headerWrap
-      position: fixed;
-      top:0;
-      left: 0;
-      z-index: 100;
-      width: 100%;
-      background: white;
-      height: 88/@rem
-      border-bottom: 2px solid #ccc;
-      .header
-        width: 100%;
-        height: 88/@rem;
-        padding:0 30/@rem 0 30/@rem;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        .headerSearch
-          width: 100%;
-          height: 55/@rem;
-          background: #ededed;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          span
-            font-size: 26/@rem;
-            color: #666;
-          .icon-sousuo
-            font-size: 28/@rem;
-            margin-right: 8/@rem;
-    .itemWrap
-      width: 100%;
-      overflow: hidden;
-      padding-top: 88/@rem;
-      .left
-        width: 160/@rem;
-        position: fixed;
+  .fenlei
+    .hdWraper
+      height: 1.8rem;
+      .m-hd
+        position: fixed!important;
         left: 0;
-        top: 88/@rem;
-        bottom: 0;
-        z-index: 4;
-        margin-top: 40/@rem;
-        .leftUl
-          padding-bottom: 1rem;
-          width: 160/@rem;
-          background: #fff;
-          li
-            width: 100%;
-            height: 75/@rem;
-            text-align: center;
-            line-height: 75/@rem;
-            margin-bottom: 20/@rem;
-            cursor: pointer;
-            a
-              font-size: 27/@rem;
-              color: #333;
-              display: block;
-              width: 100%;
-              height: 100%;
-            .active
-              color: red;
-              font-size: 33/@rem;
-              font-weight: bold;
-              border-left: 6px solid red;
-      .right
-        width: 587/@rem;
-        margin-left: 160/@rem;
-        position: fixed;
-        right: 0;
-        top: 88/@rem;
-        bottom: 0;
-        border-left: 1px solid #333;
-        .rightWrap
-          box-sizing: border-box;
-          padding: 30/@rem;
-          img
-            width: 100%;
-          .title
-            height: 107/@rem;
-            display: flex;
-            align-items: center;
+        top: 0;
+        z-index: 5;
+        width: 100%;
+        .m-itemCateListHd
+          align-items: center;
+          height: 2.17333rem;
+          padding: 0 .4rem;
+          background-color: #fff;
+          position: relative;
+          display: flex;
+          bottom-border-1px(#eee)
+          .m-topSearchIpt
             justify-content: center;
-            span
-              font-size: 28/@rem;
-              color: #7e8c8d;
-            .lines
-              width: 40/@rem;
-              height: 1/@rem;
-              background: #d9d9d9;
-              margin: 8/@rem;
+            width 100%
+            height: 1.34667rem;
+            font-size: .6rem;
+            background-color: #ededed;
+            border-radius: .10667rem;
+            line-height 1.34667rem
+            text-align: center
+            .header-input-icon
+              background-repeat: no-repeat;
+              background-size: 100% 100%;
+              width: .37333rem;
+              height: .37333rem;
+              margin-right: .13333rem;
+            .placeholder
+              color: #666;
+    .m-cateNavVertWrap
+      left: 0;
+      top: 2.17333rem;
+      position: fixed;
+      z-index: 4;
+      width: 3.5rem;
+      background-color: #fff;
+      border-right  1px solid #eee
+      .m-cateNavVertWrap-space
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        .m-cateNavVert
+          transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+          transition-duration: 0ms;
+          transform: translate(0px, -94.4px) translateZ(0px);
 
-          .contentWrap
-            overflow: hidden;
-            li
-              width: 140/@rem;
-              height: 215/@rem;
-              margin-right: 33/@rem;
-              float: left;
-              &:nth-child(3n)
-                margin-right: 0;
-              a
-                display: flex;
-                width: 100%;
-                height: 100%;
-                flex-direction: column;
-                font-size: 23/@rem;
-                span
-                  display: block;
-                  color: #333;
-                  height: 71/@rem;
+          margin-top 115px
+          .item
+            width: 100%;
+            height: 1.66667rem;
+            text-align: center;
+            border: none;
+            margin-bottom 10px
+            .txt
+              color #333;
+              display: block;
+              font-size: .6rem;
+              line-height: .86667rem;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+      .m-subCateList
+        margin-left: 2.16rem;
+        padding: .4rem .4rem .28rem;
+        position absolute
+        top: 0
+        bottom: 0
+        width 100%
+        .banner
+          position: relative;
+          width: 100%;
+          height: 2.56rem;
+          display: table;
+          margin-bottom: .42667rem;
+          background: center no-repeat #f4f4f4;
+          background-size: cover;
+          border-radius: 4px;
+          .cnt
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            font-size: .37333rem;
+            color: #fff;
+        .cateList
+
+          .list
+            .cateItem
+              display: inline-block;
+              margin-right: .45333rem;
+              font-size: 0;
+              width: 1.92rem;
+              vertical-align: top;
+              >a
+                .cateImgWrapper
+                  width: 1.92rem;
+                  height: 1.92rem;
+                  >img
+                    display: block;
+                    width: 100%;
+                    background: #fff;
+                    height: 100%;
+                .name
+                  height: .96rem;
+                  font-size: .32rem;
                   text-align: center;
-                  line-height: 71/@rem;
-
-
+                  line-height: .48rem;
+                  display: block;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
 </style>
