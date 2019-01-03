@@ -13,28 +13,31 @@
     <div class="m-cateNavVertWrap">
       <div class="m-cateNavVertWrap-space">
         <ul class="m-cateNavVert">
-          <li class="item" v-for="(list,index) in categoryL1List" :key="index">
+          <li class="item on" v-for="(list,index) in categoryL1List" :key="index">
             <a href="javescript:;" class="txt">{{list.name}}</a>
           </li>
 
         </ul>
-        <div class="m-subCateList">
-          <div class="banner">
-            <div class="cnt"></div>
-          </div>
-          <div class="cateList">
-            <ul class="list">
-              <li class="cateItem">
-                <a href="javascript:;">
-                  <div class="cateImgWrapper">
-                    <img src="http://yanxuan.nosdn.127.net/14bbdfb252b4ce346b8e9d019bb5b677.png?imageView&quality=85&thumbnail=144x144" alt="" class="cateImg">
-                  </div>
-                  <div class="name"></div>
-                </a>
-              </li>
-            </ul>
-          </div>
+
+      </div>
+    </div>
+    <div class="m-subCateList">
+      <div class="banner">
+        <div class="cnt" >
+          <img src="http://yanxuan.nosdn.127.net/8f6643db675acace2420594545c3a180.jpg?imageView&thumbnail=0x196&quality=75" alt="">
         </div>
+      </div>
+      <div class="cateList">
+        <ul class="list">
+          <li class="cateItem " v-for="(item,index) in currentCategory.subCateList" :key="index">
+            <a href="javascript:;">
+              <div class="cateImgWrapper">
+                <img :src="item.bannerUrl" alt="" class="cateImg">
+              </div>
+              <div class="name">{{item.name}}</div>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -102,7 +105,6 @@
       .m-cateNavVertWrap-space
         position: relative;
         height: 100%;
-        width: 100%;
         overflow: hidden;
         .m-cateNavVert
           transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
@@ -116,61 +118,65 @@
             text-align: center;
             border: none;
             margin-bottom 10px
+
             .txt
               color #333;
               display: block;
               font-size: .6rem;
-              line-height: .86667rem;
+              line-height 1.66667rem
               text-overflow: ellipsis;
               white-space: nowrap;
               overflow: hidden;
-      .m-subCateList
-        margin-left: 2.16rem;
-        padding: .4rem .4rem .28rem;
+
+
+    .m-subCateList
+        margin-left: 3.16rem;
+        padding: .5rem .5rem .8rem 1rem;
         position absolute
-        top: 0
+        top: 2.17333rem;
         bottom: 0
-        width 100%
         .banner
           position: relative;
           width: 100%;
-          height: 2.56rem;
+          height: 3.56rem;
           display: table;
           margin-bottom: .42667rem;
           background: center no-repeat #f4f4f4;
           background-size: cover;
-          border-radius: 4px;
           .cnt
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            font-size: .37333rem;
             color: #fff;
+            img
+              width 100%
+              border-radius: 2px;
         .cateList
-
+          width 100%
+          margin-bottom 50px
+          clearFix()
           .list
+            width 100%
+            clearFix()
             .cateItem
               display: inline-block;
-              margin-right: .45333rem;
+              margin-right: .1rem;
               font-size: 0;
-              width: 1.92rem;
+              width: 3.5rem;
               vertical-align: top;
               >a
                 .cateImgWrapper
-                  width: 1.92rem;
-                  height: 1.92rem;
+                  width: 3.2rem;
+                  height: 3.2rem;
                   >img
                     display: block;
                     width: 100%;
                     background: #fff;
                     height: 100%;
                 .name
-                  height: .96rem;
-                  font-size: .32rem;
+                  height: 1.2rem;
+                  font-size: .52rem;
                   text-align: center;
-                  line-height: .48rem;
                   display: block;
                   display: -webkit-box;
                   -webkit-line-clamp: 2;
                   -webkit-box-orient: vertical;
+                  color #333
 </style>

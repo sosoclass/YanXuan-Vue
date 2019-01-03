@@ -7,6 +7,7 @@ import data_nav from './data_nav.json'
 import home_data from './home_data.json'
 import shiwu_data from './shiwu_data.json'
 import fenlei_zhuanqu from './fenlei_zhuanqu.json'
+import FeHelper from './FeHelper-20190103151422.json'
 
 // data的接口
 Mock.mock('/data', {code:0, data: data})
@@ -23,6 +24,8 @@ Mock.mock('/currentCategory',{code:0,currentCategory:fenlei_zhuanqu.currentCateg
 Mock.mock('/categoryL1List',{code:0,categoryL1List:fenlei_zhuanqu.categoryL1List})
 
 Mock.mock('/categoryModule',{code:0,categoryModule:home_data.categoryModule})
+
+Mock.mock('/data',{code:0,data:FeHelper.data})
 //返回home页数据的接口
 Mock.mock('/home', {code:0, home: home_data})
 //home nav数据总数组

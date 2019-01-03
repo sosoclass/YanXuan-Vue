@@ -23,7 +23,8 @@ import {
   RESET_USERS,
   REQ_SCENELIGHTSHOPPINGGUIDEMODULE,
   REQ_REQCATEGORYMODULE,
-  REQ_CURRENTCATEGORY
+  REQ_CURRENTCATEGORY,
+  REQ_GETTABS
 } from './mutations-Type'
 import {
   reqData,
@@ -53,7 +54,7 @@ import {
   reqsceneLightShoppingGuideModule,
   reqcategoryModule,
   reqcurrentCategory,
-
+  reqgettabs
 } from '../src/api'
 
 export default {
@@ -90,6 +91,14 @@ export default {
     const currentCategory = await reqcurrentCategory();
     if (currentCategory.code === 0) {
       commit(REQ_CURRENTCATEGORY, {currentCategory: currentCategory.currentCategory})
+      typeof cb === 'function' && cb()
+    }
+  },
+//网易在线接口识物Tab
+  async reqgettabs ({commit},cb) {
+    const data = await reqgettabs();
+    if (data.code === 0) {
+      commit(REQ_GETTABS, {data: data.data})
       typeof cb === 'function' && cb()
     }
   },

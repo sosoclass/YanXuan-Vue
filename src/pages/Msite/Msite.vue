@@ -403,6 +403,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  @import "../../common/stylus/mixins";
   .page-mysite
     height: 148px;
     position relative
