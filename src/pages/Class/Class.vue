@@ -13,28 +13,26 @@
     <div class="m-cateNavVertWrap">
       <div class="m-cateNavVertWrap-space">
         <ul class="m-cateNavVert">
-          <li class="item on" v-for="(list,index) in categoryL1List" :key="index">
-            <a href="javescript:;" class="txt">{{list.name}}</a>
+          <li class="item" v-for="(list,index) in categoryL1List" :key="index" >
+            <a :href="`http://m.you.163.com/item/list?categoryId=${categoryObj.id}&subCategoryId=${category.id}`" class="txt " :class="{active:currIndex===index}" @click="curIndex=index">{{list.name}}</a>
           </li>
-
         </ul>
-
       </div>
     </div>
-    <div class="m-subCateList">
+    <div class="m-subCateList" >
       <div class="banner">
         <div class="cnt" >
-          <img src="http://yanxuan.nosdn.127.net/8f6643db675acace2420594545c3a180.jpg?imageView&thumbnail=0x196&quality=75" alt="">
+          <img :src="currentCategory.wapBannerUrl" alt="banner" >
         </div>
       </div>
-      <div class="cateList">
+      <div class="cateList"  >
         <ul class="list">
-          <li class="cateItem " v-for="(item,index) in currentCategory.subCateList" :key="index">
-            <a href="javascript:;">
+          <li class="cateItem "  v-for="subCate in currentCategory.subCateList" :key="subCate.id" @click="">
+            <a :href="`http://m.you.163.com/item/list?categoryId=${subCate.id}&subCategoryId=${subCate.id}`">
               <div class="cateImgWrapper">
-                <img :src="item.bannerUrl" alt="" class="cateImg">
+                <img :src="subCate.wapBannerUrl" alt="" class="cateImg">
               </div>
-              <div class="name">{{item.name}}</div>
+              <div class="name">{{subCate.name}}</div>
             </a>
           </li>
         </ul>
@@ -47,8 +45,16 @@
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   export default {
+    data(){
+      return{
+        currIndex:0,
+      }
+    },
     computed: {
-      ...mapState(['currentCategory','categoryL1List'])
+      ...mapState(['currentCategory','categoryL1List']),
+//      categoryL1List(){
+//        return this.categoryL1List[this.curIndex];
+//      },
     },
     mounted(){
       this.$store.dispatch('reqcurrentCategory');
@@ -118,7 +124,6 @@
             text-align: center;
             border: none;
             margin-bottom 10px
-
             .txt
               color #333;
               display: block;
@@ -127,6 +132,9 @@
               text-overflow: ellipsis;
               white-space: nowrap;
               overflow: hidden;
+              &.active
+                color: #ab2b2b;
+                border-left 3px solid #ab2b2b
 
 
     .m-subCateList

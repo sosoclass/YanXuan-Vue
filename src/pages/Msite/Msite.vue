@@ -1,5 +1,5 @@
 <template>
-  <div class="page-mysite ">
+  <div class="page-mysite">
     <div class="fix">
       <div class="nav-header ">
         <a href="javascript:;" class="header-link">

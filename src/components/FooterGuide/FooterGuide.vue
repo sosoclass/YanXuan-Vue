@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer_guide border-1px">
+  <footer class="footer_guide border-1px" :class="{none:$route.path.includes('/profile')}">
         <span href="javascript:;" class="guide_item"  @click="handleClick('/msite')" :class="{on:$route.path.includes('/msite')}">
             <span class="item_icon">
                 <i class="iconfont icon_msite icon-shouye"></i>
@@ -38,7 +38,6 @@
     methods: {
       handleClick(path) {
         this.$router.replace(path);
-
       }
     }
   };
@@ -79,4 +78,6 @@
 
 
 
+    &.none
+      display none
 </style>

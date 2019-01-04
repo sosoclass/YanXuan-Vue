@@ -6,4 +6,5 @@ export default {
   sceneLightShoppingGuideModule:[],
   currentCategory:{},
   categoryL1List:[],
+  result:[]
 }

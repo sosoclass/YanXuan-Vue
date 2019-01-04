@@ -24,7 +24,15 @@ export default [
     },
     {
       path: '/class',
-      component: Class
+      component: Class,
+      children:[
+        {
+          path:"/class/:id",
+          component:Class,
+          props:(route)=>({id:route.params.id*1})
+        },
+        {path:"",redirect:'/class/0'},
+      ]
     },
     {
       path: '/profile',

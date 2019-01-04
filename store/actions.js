@@ -24,7 +24,8 @@ import {
   REQ_SCENELIGHTSHOPPINGGUIDEMODULE,
   REQ_REQCATEGORYMODULE,
   REQ_CURRENTCATEGORY,
-  REQ_GETTABS
+  REQ_GETTABS,
+  REQ_REQRECAUTO
 } from './mutations-Type'
 import {
   reqData,
@@ -54,7 +55,8 @@ import {
   reqsceneLightShoppingGuideModule,
   reqcategoryModule,
   reqcurrentCategory,
-  reqgettabs
+  reqgettabs,
+  reqrecAuto
 } from '../src/api'
 
 export default {
@@ -99,6 +101,14 @@ export default {
     const data = await reqgettabs();
     if (data.code === 0) {
       commit(REQ_GETTABS, {data: data.data})
+      typeof cb === 'function' && cb()
+    }
+  },
+
+  async reqrecAuto ({commit},cb) {
+    const result = await reqrecAuto();
+    if (result.code === 0) {
+      commit(REQ_REQRECAUTO, {result: result.result})
       typeof cb === 'function' && cb()
     }
   },

@@ -26,6 +26,8 @@ export const reqcategoryL1List = () => ajax('/categoryL1List')
 
 export const reqgettabs = () => ajax('/data')
 
+export const reqrecAuto = () => ajax('/result')
+
 //home 福利
 export const reqsaleIndexVO = () => ajax('/saleIndexVO')
 

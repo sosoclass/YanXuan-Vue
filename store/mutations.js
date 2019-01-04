@@ -6,7 +6,8 @@ import {
   REQ_SCENELIGHTSHOPPINGGUIDEMODULE,
   REQ_REQCATEGORYMODULE,
   REQ_CURRENTCATEGORY,
-  REQ_GETTABS
+  REQ_GETTABS,
+  REQ_REQRECAUTO
 } from './mutations-Type'
 
 export default {
@@ -35,6 +36,8 @@ export default {
   [REQ_GETTABS] (state,{data}) {
     state.data = data;
   },
-
+  [REQ_REQRECAUTO] (state,{result}) {
+    state.result = result;
+  },
 
 }

@@ -15,6 +15,8 @@ export const REQ_CATEGORYL1LIST = 'req_categoryl1list'
 //网易在线接口识物Tab
 export const REQ_GETTABS = 'req_gettabs'
 
+export const REQ_REQRECAUTO = 'req_reqrecAuto'
+
 export const REQ_CURRENTCATEGORY = 'req_currentCategory'
 
 export const REQ_SALEINDEXVO = 'req_saleindexvo'
