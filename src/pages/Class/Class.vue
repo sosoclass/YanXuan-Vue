@@ -3,7 +3,7 @@
     <div class="hdWraper">
       <div class="m-hd">
         <div class="m-itemCateListHd">
-          <div class="m-topSearchIpt">
+          <div class="m-topSearchIpt" @click="$router.push('/search')">
             <i class="header-input-icon iconfont icon-search"></i>
             <span class="placeholder" >搜索商品, 共20229款好物</span>
           </div>
@@ -12,27 +12,29 @@
     </div>
     <div class="m-cateNavVertWrap">
       <div class="m-cateNavVertWrap-space">
-        <ul class="m-cateNavVert">
-          <li class="item" v-for="(list,index) in categoryL1List" :key="index" >
-            <a :href="`http://m.you.163.com/item/list?categoryId=${categoryObj.id}&subCategoryId=${category.id}`" class="txt " :class="{active:currIndex===index}" @click="curIndex=index">{{list.name}}</a>
+        <ul class="m-cateNavVert" >
+          <li class="item" :class="{active:currIndex===index}"
+              v-for="(cate,index) in currentCategory" :key="cate.id"
+              @click="curIndex=index">
+              {{cate.name}}
           </li>
         </ul>
       </div>
     </div>
-    <div class="m-subCateList" >
+    <div class="m-subCateList"  >
       <div class="banner">
         <div class="cnt" >
-          <img :src="currentCategory.wapBannerUrl" alt="banner" >
+          <img :src="list.wapBannerUrl" v-for="(list,index) in currentCategory" :key="index" v-if="list.id===109230000"/>
         </div>
       </div>
-      <div class="cateList"  >
-        <ul class="list">
-          <li class="cateItem "  v-for="subCate in currentCategory.subCateList" :key="subCate.id" @click="">
-            <a :href="`http://m.you.163.com/item/list?categoryId=${subCate.id}&subCategoryId=${subCate.id}`">
+      <div class="cateList" v-for="(list,index) in currentCategory" :key="index" v-if="list.id===109230000">
+        <ul class="list" >
+          <li class="cateItem " v-for="(item,index) in list.subCateList" :key="index" >
+            <a :href="`http://m.you.163.com/item/list?categoryId=${item.id}&subCategoryId=${item.id}`">
               <div class="cateImgWrapper">
-                <img :src="subCate.wapBannerUrl" alt="" class="cateImg">
+                <img :src="item.wapBannerUrl" alt="" class="cateImg" :key="item.wapBannerUrl">
               </div>
-              <div class="name">{{subCate.name}}</div>
+              <div class="name">{{item.name}}</div>
             </a>
           </li>
         </ul>
@@ -51,14 +53,18 @@
       }
     },
     computed: {
-      ...mapState(['currentCategory','categoryL1List']),
-//      categoryL1List(){
-//        return this.categoryL1List[this.curIndex];
-//      },
+      ...mapState(['currentCategory','categoryL1List'])
     },
+
     mounted(){
       this.$store.dispatch('reqcurrentCategory');
-      this.$store.dispatch('reqCategoryL1List');
+      this.$store.dispatch('reqCategoryL1List',()=>{
+        new BScroll('.m-cateNavVertWrap-space',{
+          scrollY: true,
+          click: true,
+          bounce:false
+        })
+      })
     }
 
   }
@@ -93,8 +99,6 @@
             line-height 1.34667rem
             text-align: center
             .header-input-icon
-              background-repeat: no-repeat;
-              background-size: 100% 100%;
               width: .37333rem;
               height: .37333rem;
               margin-right: .13333rem;
@@ -102,39 +106,36 @@
               color: #666;
     .m-cateNavVertWrap
       left: 0;
-      top: 2.17333rem;
+      top: 0;
       position: fixed;
       z-index: 4;
       width: 3.5rem;
       background-color: #fff;
       border-right  1px solid #eee
+      height 100%
       .m-cateNavVertWrap-space
-        position: relative;
-        height: 100%;
-        overflow: hidden;
+        height 100%
+        box-sizing border-box
+        padding: 0 0 .98rem 0;
+        margin-top 2.5rem
         .m-cateNavVert
-          transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
-          transition-duration: 0ms;
-          transform: translate(0px, -94.4px) translateZ(0px);
-
-          margin-top 115px
+          padding-bottom: 5rem;
           .item
             width: 100%;
-            height: 1.66667rem;
             text-align: center;
             border: none;
             margin-bottom 10px
-            .txt
-              color #333;
-              display: block;
-              font-size: .6rem;
-              line-height 1.66667rem
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              overflow: hidden;
-              &.active
-                color: #ab2b2b;
-                border-left 3px solid #ab2b2b
+            color #333;
+            display: block;
+            font-size: .6rem;
+            line-height 1.66667rem
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            &.active
+              color: #ab2b2b;
+              border-left 3px solid #ab2b2b
+
 
 
     .m-subCateList

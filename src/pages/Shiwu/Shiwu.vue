@@ -17,7 +17,7 @@
             <a href="javascript:;" class="psc-u-link-cart"  @click="$router.replace('/shopcart')">
               <i class="iconfont icon-gouwuche"></i>
             </a>
-            <a href="javascript:;" class="psc-u-link-search">
+            <a href="javascript:;" class="psc-u-link-search" @click="$router.replace('/search')">
               <i class="iconfont icon-search"></i>
             </a>
           </div>

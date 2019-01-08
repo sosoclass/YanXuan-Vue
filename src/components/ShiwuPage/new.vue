@@ -1,5 +1,5 @@
 <template>
-  <div class="m-main-content ">
+  <div class="m-main-content">
     <div>
       <div v-for="(list,index) in result" :key="index">
         <div class="m-tpls" v-for="(list,index) in list.topics" :key="index" v-if="list.style===3">
@@ -34,9 +34,9 @@
     },
     mounted(){
       this.$store.dispatch('reqrecAuto',()=>{
-        new BScroll('.m-main-content', {
-          scrollY: true,
-          click: true,
+        new BScroll('.m-main-content',{
+          scrollY:true,
+          click:true,
           bounce:false
         })
       })
@@ -50,6 +50,7 @@
     padding: 0 0 .98rem 0;
     margin-top 3.5rem
     box-sizing border-box
+    height 100%
     .m-tpls
       width: 100%;
       background: #fff;

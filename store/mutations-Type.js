@@ -1,4 +1,7 @@
-
+export const SETSEARCHRESULT='setSearchResult';
+export const RESETSEARCHRESULT='resetSearchresult';
+export const SETSEARCHINITLIST='setSearchInitList';
+export const SETSEARCHGOODS='setSearchGoods';
 
 export const REQ_DATA = 'req_data'
 

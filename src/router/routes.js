@@ -13,7 +13,10 @@ import Home from '../components/ShiwuPage/home.vue'
 import Daren from '../components/ShiwuPage/daren.vue'
 import Order from '../components/ShiwuPage/order.vue'
 import New from '../components/ShiwuPage/new.vue'
-
+import Phone from '../pages/ProFile/phone.vue'
+import Email from '../pages/ProFile/Email.vue'
+import LoninTemple from '../components/LoginTemple/LoninTemple.vue'
+import Search from '../pages/Search/Search.vue'
 
 Vue.use(Router);
 
@@ -22,6 +25,10 @@ export default [
       path: '/msite',
       component: Msite
     },
+  {
+    path: '/search',
+    component: Search
+  },
     {
       path: '/class',
       component: Class,
@@ -36,7 +43,25 @@ export default [
     },
     {
       path: '/profile',
-      component: ProFile
+      component: ProFile,
+      children:[
+        {
+          path: '/profile/phone',
+          component: Phone,
+        },
+        {
+          path: '/profile/email',
+          component: Email,
+        },
+        {
+          path: '/profile/login',
+          component: LoninTemple,
+        },
+        {
+          path:'',
+          redirect:'/profile/login'
+        },
+      ]
     },
     {
       path: '/shiwu',

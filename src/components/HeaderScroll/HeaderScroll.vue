@@ -62,7 +62,7 @@
     methods: {},
     mounted(){
       this.$store.dispatch('reqkingKongModule',()=>{
-        new BScroll('.page-hot', {
+        new BScroll('.left', {
           scrollX: true,
           click: true
         })
@@ -82,7 +82,7 @@
     margin-top 5px
     overflow hidden
     margin-bottom .1rem
-    width 1000px
+    width 100%
     white-space nowrap
     position relative
     .left

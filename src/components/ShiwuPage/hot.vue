@@ -33,6 +33,7 @@
 <script>
   import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
+
   export default {
     computed: {
       ...mapState(['data'])
@@ -54,6 +55,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  //容器父级
   .hot
     height 100%
     box-sizing border-box

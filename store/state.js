@@ -6,5 +6,8 @@ export default {
   sceneLightShoppingGuideModule:[],
   currentCategory:{},
   categoryL1List:[],
-  result:[]
+  result:[],
+  searchResult:[],
+  searchGoods:[],
+  searchInitList:{}
 }

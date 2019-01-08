@@ -25,7 +25,11 @@ import {
   REQ_REQCATEGORYMODULE,
   REQ_CURRENTCATEGORY,
   REQ_GETTABS,
-  REQ_REQRECAUTO
+  REQ_REQRECAUTO,
+  SETSEARCHRESULT,
+  RESETSEARCHRESULT,
+  SETSEARCHGOODS,
+  SETSEARCHINITLIST
 } from './mutations-Type'
 import {
   reqData,
@@ -56,10 +60,52 @@ import {
   reqcategoryModule,
   reqcurrentCategory,
   reqgettabs,
-  reqrecAuto
+  reqrecAuto,
+  reqSearchResult,
+  reqSearchGoods,
+  reqSearchInit
+
 } from '../src/api'
 
+
+
+
+
 export default {
+
+  //获取设置searchResult数组
+  async getSearchResult({commit},{keywordPrefix,cb}){
+    const result = await reqSearchResult(keywordPrefix);
+    if(result.code==200){
+      commit(SETSEARCHRESULT,{searchResult:result.data});
+      typeof cb=="function"&&cb();
+    }
+  },
+
+  //清空设置searchResult数组
+  async resetSearchResult({commit}){
+    commit(RESETSEARCHRESULT);
+  },
+//清空设置searchGoods数组
+  async getSearchGoods({commit},{keyword,cb}){
+    const result = await reqSearchGoods(keyword);
+    if(result.code==200){
+      commit(SETSEARCHGOODS,{searchGoods:result.data.directlyList});
+      typeof cb=="function"&&cb();
+    }
+  },
+
+  //清空设置searchGoods数组
+  async getSearchInit({commit}){
+    const result = await reqSearchInit();
+    if(result.code==200){
+      commit(SETSEARCHINITLIST,{searchInitList:result.data});
+    }
+  },
+
+
+
+
   async reqData ({commit},cb) {
     const result  = await reqData();
     if (result.code === 0){
@@ -92,10 +138,11 @@ export default {
   async reqcurrentCategory ({commit},cb) {
     const currentCategory = await reqcurrentCategory();
     if (currentCategory.code === 0) {
-      commit(REQ_CURRENTCATEGORY, {currentCategory: currentCategory.currentCategory})
+      commit(REQ_CURRENTCATEGORY, {currentCategory: currentCategory.data})
       typeof cb === 'function' && cb()
     }
   },
+
 //网易在线接口识物Tab
   async reqgettabs ({commit},cb) {
     const data = await reqgettabs();
@@ -168,6 +215,8 @@ export default {
       typeof cb === 'function' && cb()
     }
   },
+
+
   async reqTopicBanner ({commit},cb) {
     const banner = await reqTopicBanner();
     if (banner.code === 0){

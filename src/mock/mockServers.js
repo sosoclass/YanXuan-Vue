@@ -9,6 +9,8 @@ import shiwu_data from './shiwu_data.json'
 import fenlei_zhuanqu from './fenlei_zhuanqu.json'
 import FeHelper from './new_data.json'
 import FeHelper1 from  './daren_data.json'
+import msite from './msite.json';
+import category from './category.json';
 
 // data的接口
 Mock.mock('/data', {code:0, data: data})
@@ -20,9 +22,9 @@ Mock.mock('/kingKongModule',{code:0,kingKongModule:home_data.kingKongModule})
 
 Mock.mock('/sceneLightShoppingGuideModule',{code:0,sceneLightShoppingGuideModule:home_data.sceneLightShoppingGuideModule})
 
-Mock.mock('/currentCategory',{code:0,currentCategory:fenlei_zhuanqu.currentCategory})
+Mock.mock('/currentCategory',{code:0,data:category})
 // 分类下数据
-Mock.mock('/categoryL1List',{code:0,categoryL1List:fenlei_zhuanqu.categoryL1List})
+Mock.mock('/categoryL1List', {code:0, categoryL1List: data_nav.categoryL1List})
 
 Mock.mock('/categoryModule',{code:0,categoryModule:home_data.categoryModule})
 

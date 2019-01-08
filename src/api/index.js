@@ -6,7 +6,9 @@ const BASE = '/api'
 export const reqCodeLogin = (phone, code) => ajax(BASE + 'login_sms', {phone, code}, 'POST');
 export const reqGetUsers = () => ajax(BASE + '/userinfo')
 
-
+export const reqSearchResult =(keywordPrefix)=>ajax(BASE+`/xhr/search/searchAutoComplete.json`,{keywordPrefix},"POSTFORM");
+export const reqSearchGoods =(keyword)=>ajax(BASE+`/xhr/search/search.json?keyword=${keyword}&sortType=0&descSorted=false&categoryId=0&matchType=0&floorPrice=-1&upperPrice=-1&size=40&itemId=0&stillSearch=false&searchWordSource=1&_stat_search=userhand`);
+export const reqSearchInit =()=>ajax(BASE+`/xhr/search/init.json`);
 //msite nav数据
 export const reqData = () => ajax('/data')
 

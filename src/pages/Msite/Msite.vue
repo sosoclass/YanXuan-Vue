@@ -4,7 +4,7 @@
       <div class="nav-header ">
         <a href="javascript:;" class="header-link">
           <img src="./images/icon-yanxuan.png" alt="yanxuan" class="header-img">
-          <div class="header-input">
+          <div class="header-input" @click="$router.push('/search')">
             <span class="header-input-icon iconfont icon-search"></span>
             <span class="placeholder">搜索商品，共xxxx件好货</span>
           </div>

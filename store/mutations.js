@@ -7,7 +7,11 @@ import {
   REQ_REQCATEGORYMODULE,
   REQ_CURRENTCATEGORY,
   REQ_GETTABS,
-  REQ_REQRECAUTO
+  REQ_REQRECAUTO,
+  SETSEARCHRESULT,
+  RESETSEARCHRESULT,
+  SETSEARCHGOODS,
+  SETSEARCHINITLIST
 } from './mutations-Type'
 
 export default {
@@ -38,6 +42,26 @@ export default {
   },
   [REQ_REQRECAUTO] (state,{result}) {
     state.result = result;
+  },
+
+  //模糊查询,将获取的数据放入searchResult中
+  [SETSEARCHRESULT](state, {searchResult}){
+    state.searchResult = searchResult;
+  },
+
+  //模糊查询,将获取的数据放入searchResult中
+  [RESETSEARCHRESULT](state){
+    state.searchResult = [];
+  },
+
+  //商品查询,将获取的数据放入searchGoods中
+  [SETSEARCHGOODS](state, {searchGoods}){
+    state.searchGoods = searchGoods;
+  },
+
+  //查询页面的首屏信息,将获取的数据放入searchInitList中
+  [SETSEARCHINITLIST](state, {searchInitList}){
+    state.searchInitList = searchInitList;
   },
 
 }
